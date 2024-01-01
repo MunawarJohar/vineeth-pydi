@@ -1,3 +1,255 @@
+<<<<<<< HEAD
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport"content="initial-scale=1">
+
+  <title>Vineeth Pydi</title>
+  <meta name="theme-color" content="#00ea75" />
+
+  <link href="css/typography.css" rel="stylesheet" type="text/css">
+  <link href="css/style.css" rel="stylesheet" type="text/css">
+
+  <link rel="shortcut icon" href="yes-its-upsidedown.png">
+
+  <style>
+  @media (min-width: 580px){
+    /* width */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+      background: white;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background: rgb(218, 218, 218);
+    }
+  }
+  </style>
+  
+  <script type="text/javascript" src="./me-facts.json"></script>
+  <script>
+    window.onload = function() {
+      const meFacts = JSON.parse(facts);
+      let duplicateTracker = {0: true};
+
+      drawSmile();
+      
+      window.setTimeout(
+        function(){
+          updateMeFact()
+        }, 2000
+      );
+
+      function drawSmile() {
+        let scaleFactor = window.devicePixelRatio || 1;
+        let smileCanvas = document.getElementById("smile");
+        let smileCtx = scaleCtx(smileCanvas, scaleFactor);
+
+        drawEye(smileCtx);
+        drawMouth(smileCtx);
+      }
+
+      function drawEye(ctx) {
+        ctx.beginPath();
+        ctx.fillStyle = "black";
+        // ctx.arc(11, 10, 6, 0, Math.PI * 2); // 70px
+        // ctx.arc(60, 10, 6, 0, Math.PI * 2); // 70px
+        ctx.arc(0 + 35, 34, 4, 0, Math.PI * 2);
+        ctx.arc(100 - 35, 35, 4, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.closePath();
+      }
+
+      function drawMouth(ctx) {
+        ctx.beginPath();
+        ctx.strokeStyle = "black";
+        // ctx.lineWidth = 12; // 70px
+        ctx.lineWidth = 7;
+        ctx.lineCap = "round";
+        // ctx.arc(35, 38, 22, Math.PI * 2.2, Math.PI * .84); // 70px
+        ctx.arc(50, 50, 14, Math.PI * 2.2, Math.PI * .84);
+        ctx.stroke();
+        ctx.closePath();
+      }
+
+      function scaleCtx(canvas, s) {
+        canvas.style.width = canvas.width + 'px';
+        canvas.style.height = canvas.height + 'px';
+
+        canvas.width = Math.ceil(canvas.width * s);
+        canvas.height = Math.ceil(canvas.height * s);
+
+        ctx = canvas.getContext('2d');
+        ctx.scale(s, s);
+
+        return ctx;
+      }
+
+      function updateMeFact() {
+        window.setTimeout(
+          function(){
+            updateMeFact()
+          }, 2000
+        );
+        oldMeFact = document.getElementById("meFact");
+        oldMeFact.innerHTML = meFacts[randNum(0, 14)].fact;
+      }
+
+      function randNum(min, max){
+        randInt = Math.round(Math.random()*(max-min+1)+min);
+
+        while ( typeof duplicateTracker[randInt] != 'undefined' ) {
+          randInt = Math.round(Math.random()*(max-min+1)+min);
+        }
+
+        if (Object.keys(duplicateTracker).length == 14) {
+          duplicateTracker = { [randInt] : true};
+          return randInt;
+        }
+        else {
+          duplicateTracker[randInt] = true;
+          return randInt;
+        }
+
+      }
+    }
+  </script>
+
+
+</head>
+
+<body>
+
+  <!-- <div id="particles-js"></div> -->
+   
+
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+  <script src="./particles-js.js"></script>
+
+  <header class="site__header container flex">
+    <canvas width="100" height="100" id="smile"></canvas>
+  </header>
+
+  <header class="site__header container flex">
+    <canvas width="100" height="100" id="smile"></canvas>
+  </header>
+
+  <div class="container home__intro">
+    <p class="caption">00. Me facts</p>
+    <div id="headerDescription">Vineeth Pydi,<br><span id="meFact">a passionate data professional.</span></div>
+    <div class="flex headerBody">
+      <p class="personalStatement">Luka Schulz is what you might call a designer. He lives in Brooklyn and firmly believes in sauce being served on the side.</p>
+
+      <ul class="flex clean">
+        <li><sup>01.</sup><a href="Vineeth_Pydi_Resume.pdf" title="Resume." target="_blank">Resume</a></li>
+        <li><sup>02.</sup><a href="#work" title="Experience">Work</a></li>
+        <li><sup>03.</sup><a href="./library.html" title="List of Projects" target="_blank">Projects</a></li>
+        <li><sup>04.</sup><a href="email.html" target="_blank" title="email.">E-mail</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="divider flex container">
+    <hr /><p id="work" class="scrollElement">01. Work</p>
+  </div>
+
+  <div class="container home__projects">
+    <h1 class="home__projectTitle"><strong>O-Whale&ndash;  </strong>A multiplayer augmented reality game exploring the future of play.</h1>
+
+    <div class="home__projectBody">
+      <a class="home__projectImage" href="https://www.behance.net/gallery/79857747/O-Whale" target="_blank">
+        <img src="./portfolio/o-whale/o-whale-banner-001.jpg"/>
+      </a>
+
+      <div class="flex home__projectCaption">
+        <p class="caption">Time: 16 Weeks (Team project, lead designer)</p>
+        <a class="caption plainLink" href="https://www.behance.net/gallery/79857747/O-Whale" target="_blank">View Project<span class="arrow">></span></a>
+      </div>
+    </div>
+
+    <h1 class="home__projectTitle"><strong>Houdini&ndash;  </strong>A word a week makes a Houdini Weenie&trade; hella fleek.</h1>
+
+    <div class="home__projectBody">
+      <a class="home__projectImage" href="./portfolio/houdini/index.html" target="_blank">
+        <img src="./portfolio/houdini/houdini-banner-001.jpg"/>
+      </a>
+
+      <div class="flex home__projectCaption">
+        <p class="caption">Time: 16 Weeks</p>
+        <a class="caption plainLink" href="./portfolio/houdini/index.html" target="_blank">View Project<span class="arrow">></span></a>
+      </div>
+    </div>
+
+    <h1 class="home__projectTitle"><strong>Lifeline&ndash;  </strong>Hospital navigation shouldn’t be more stressful than the visit itself.</h1>
+
+    <div class="home__projectBody">
+      <a class="home__projectImage" href="./portfolio/lifeline/index.html" target="_blank">
+        <img src="./portfolio/lifeline/lifeline-banner-001.jpg"/>
+      </a>
+
+      <div class="flex home__projectCaption">
+        <p class="caption">Time: 10 Weeks</p>
+        <a class="caption plainLink" href="./portfolio/lifeline/index.html" target="_blank">View Project<span class="arrow">></span></a>
+      </div>
+    </div>
+
+    <h1 class="home__projectTitle"><strong>Goofy Google&ndash;  </strong>Machine Learning, more like machines mis-discerning!</h1>
+
+    <div class="home__projectBody">
+      <a class="home__projectImage" href="./portfolio/goofy-google/index.html" target="_blank">
+        <video loop muted autoplay
+        >
+          <source src="./portfolio/goofy-google/goofy-google-banner-003.mp4" type="video/mp4">
+        </video>
+      </a>
+
+      <div class="flex home__projectCaption">
+        <p class="caption">Time: 2 Days</p>
+        <a class="caption plainLink" href="./portfolio/goofy-google/index.html" target="_blank">View Project<span class="arrow">></span></a>
+      </div>
+    </div>
+  </div>
+
+
+  <footer class="site__footer container flex">
+    <div><p>© 2024 Vineeth Pydi</p></div>
+    <ul class="flex clean">
+      <li><a href="https://seeingdata.cleverfranke.com/corpus/" target="_blank"
+title="Test">Seeing Data</a></li>
+      <li><a href="vineeth299@hotmail.com" target="_blank" title="Email">Email</a></li>
+    </ul
+  </footer>
+
+  
+  <script src="https://www.gstatic.com/firebasejs/5.5.0/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyDdaj6X9A1agnVrAJWkkf4C9_tHPYGDRKE",
+      authDomain: "vineeth-portfolio.firebaseapp.com",
+      projectId: "vineeth-portfolio",
+      storageBucket: "vineeth-portfolio.appspot.com",
+      messagingSenderId: "679802121710",
+      appId: "1:679802121710:web:decc2fb6d39c3e64f572ff",
+      measurementId: "G-XG86W4753S"
+    };
+    firebase.initializeApp(config);
+  </script>
+
+</body>
+
+
+</html>
+=======
 
 <!DOCTYPE html>
 <html lang="en-US">
@@ -246,3 +498,4 @@ title="Test">Seeing Data</a></li>
 
 
 </html>
+>>>>>>> 3f0159ee8c1e6d440470ceae65efe004ecf91f3e
