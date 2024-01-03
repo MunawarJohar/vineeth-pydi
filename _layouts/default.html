@@ -11,4 +11,23 @@
       </section>
         {{ content }}
       {% include footer.html %}
+
+      <script>
+        // This will execute once the window is loaded
+        window.onload = function() {
+          // Fetch the job titles from the JSON file
+          fetch('./me-facts.json')
+            .then(response => response.json())
+            .then(data => {
+              const jobTitles = data.jobTitles;
+              // Call the function to update the job title every 2 seconds
+              setInterval(() => {
+                const randomIndex = Math.floor(Math.random() * jobTitles.length);
+                document.getElementById('dynamicJobTitle').innerText = jobTitles[randomIndex];
+              }, 1500);
+            })
+            .catch(error => console.error('Error loading job titles:', error));
+        };
+      </script>
+      
   </body>
