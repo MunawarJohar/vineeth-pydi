@@ -15,19 +15,24 @@
       <script>
         // This will execute once the window is loaded
         window.onload = function() {
-          // Fetch the job titles from the JSON file
-          fetch('/_layouts/me-facts.json')
-            .then(response => response.json())
-            .then(data => {
-              const jobTitles = data.jobTitles;
-              // Call the function to update the job title every 2 seconds
-              setInterval(() => {
-                const randomIndex = Math.floor(Math.random() * jobTitles.length);
-                document.getElementById('dynamicJobTitle').innerText = jobTitles[randomIndex];
-              }, 1500);
-            })
-            .catch(error => console.error('Error loading job titles:', error));
+            const titles = [
+                "Data Science Professional",
+                "Visual Storyteller",
+                "Big Data Specialist",
+                "Data Innovator",
+                "Machine Learning Enthusiast",
+                "AI Explorer"
+            ];
+    
+            let currentIndex = 0;
+            const titleElement = document.getElementById("dynamicJobTitle");
+    
+            setInterval(() => {
+                titleElement.textContent = titles[currentIndex];
+                currentIndex = (currentIndex + 1) % titles.length;
+            }, 1500); // Change text every 1.5 seconds
         };
-      </script>
+    </script>
+    
       
   </body>
