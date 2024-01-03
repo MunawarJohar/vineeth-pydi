@@ -16,7 +16,7 @@
         // This will execute once the window is loaded
         window.onload = function() {
           // Fetch the job titles from the JSON file
-          fetch('./me-facts.json')
+          fetch('/_layouts/me-facts.json')
             .then(response => response.json())
             .then(data => {
               const jobTitles = data.jobTitles;
